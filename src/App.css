@@ -1,0 +1,21 @@
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+}
+
+strong {
+  font-weight: normal;
+}
