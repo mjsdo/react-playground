@@ -38,7 +38,8 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'no-duplicate-imports': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
-    '@typescript-eslint/consistent-type-imports': 'error'
+    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
   settings: {
     'import/resolver': {

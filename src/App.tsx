@@ -1,13 +1,13 @@
-import Input from '~/components/Input';
+import { Suspense } from 'react';
+import { useRoutes } from 'react-router-dom';
 
-import './App.css';
+// eslint-disable-next-line
+import routes from '~react-pages';
+
+import '~/App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <Input />
-    </div>
-  );
+  return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
 }
 
 export default App;
