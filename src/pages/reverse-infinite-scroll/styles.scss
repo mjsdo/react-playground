@@ -1,0 +1,28 @@
+.ris {
+  display: flex;
+  justify-content: center;
+
+  &__window {
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    width: 500px;
+    height: 80vh;
+    background-color: beige;
+  }
+
+  &__chat-list {
+  }
+
+  &__chat-item {
+    padding: 15px;
+  }
+
+  &__intersection-target {
+    width: 100%;
+  }
+
+  &__chat-end {
+    width: 100%;
+  }
+}
