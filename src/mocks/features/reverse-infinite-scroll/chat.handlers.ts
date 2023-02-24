@@ -10,7 +10,7 @@ import {
   sliceChatsByCursor,
 } from '~/mocks/features/reverse-infinite-scroll/chat.data';
 
-const mockChats = createChats(25);
+const mockChats = createChats(10000);
 
 const getChats = rest.get<never, GetChatsQueryParams, GetChatsResult>(
   endpoints.chats(),
