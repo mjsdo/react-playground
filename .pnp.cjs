@@ -49,6 +49,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-import", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:2.27.5"],\
             ["eslint-plugin-react", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:7.32.2"],\
             ["eslint-plugin-react-hooks", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:4.6.0"],\
+            ["immer", "npm:9.0.19"],\
             ["jsdom", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:21.1.0"],\
             ["msw", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:1.0.1"],\
             ["prettier", "npm:2.8.3"],\
@@ -4156,6 +4157,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["immer", [\
+        ["npm:9.0.19", {\
+          "packageLocation": "./.yarn/cache/immer-npm-9.0.19-96ee7d3dab-f02ee53989.zip/node_modules/immer/",\
+          "packageDependencies": [\
+            ["immer", "npm:9.0.19"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["immutable", [\
         ["npm:4.2.4", {\
           "packageLocation": "./.yarn/cache/immutable-npm-4.2.4-f20272bc9b-3be84eded3.zip/node_modules/immutable/",\
@@ -6077,6 +6087,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-import", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:2.27.5"],\
             ["eslint-plugin-react", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:7.32.2"],\
             ["eslint-plugin-react-hooks", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:4.6.0"],\
+            ["immer", "npm:9.0.19"],\
             ["jsdom", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:21.1.0"],\
             ["msw", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:1.0.1"],\
             ["prettier", "npm:2.8.3"],\
