@@ -9,6 +9,7 @@ import './styles.scss';
 const ReverseInfiniteScrollPage = () => {
   const {
     data,
+    isError,
     isLoading,
     fetchPreviousPage,
     hasPreviousPage,
@@ -41,6 +42,7 @@ const ReverseInfiniteScrollPage = () => {
   }, [isLoading]);
 
   if (isLoading) return <div>로딩중...</div>;
+  if (isError) return <div>에러</div>;
 
   return (
     <div className="ris">
@@ -50,7 +52,7 @@ const ReverseInfiniteScrollPage = () => {
           onIntersection={fetchOldChats}
         />
         <ul className="ris__chat-list">
-          {data?.pages.map((page) => (
+          {data.pages.map((page) => (
             <Chats key={page.at(0)?.id} chats={page} />
           ))}
         </ul>
