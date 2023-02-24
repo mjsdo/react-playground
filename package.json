@@ -16,7 +16,8 @@
     "@tanstack/react-query": "^4.24.6",
     "immer": "^9.0.19",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-virtuoso": "^4.1.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",

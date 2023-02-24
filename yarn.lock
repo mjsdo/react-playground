@@ -5081,6 +5081,7 @@ __metadata:
     react-dom: ^18.2.0
     react-router: ^6.8.1
     react-router-dom: ^6.8.1
+    react-virtuoso: ^4.1.0
     sass: ^1.58.2
     ts-node: ^10.9.1
     typescript: ^4.9.3
@@ -5120,6 +5121,16 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: 8e7cc7a516adeb6060911861af99d9b512893c15ec732cbf8574872919be4f3fe439ffa8c0876d1bcbced880d081bfeda3c01cb505b5a243565d10500ee0ac36
+  languageName: node
+  linkType: hard
+
+"react-virtuoso@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "react-virtuoso@npm:4.1.0"
+  peerDependencies:
+    react: ">=16 || >=17 || >= 18"
+    react-dom: ">=16 || >=17 || >= 18"
+  checksum: 79e345ea9c8efccb967f92a176fdc59c6297157b291b31549159206378470ea715d6de18db9dc489ef559d5b831c10504122e30d8577c4b4f3c9a3fc459b26cf
   languageName: node
   linkType: hard
 

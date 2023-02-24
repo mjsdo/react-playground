@@ -57,6 +57,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:18.2.0"],\
             ["react-router", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:6.8.1"],\
             ["react-router-dom", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:6.8.1"],\
+            ["react-virtuoso", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:4.1.0"],\
             ["sass", "npm:1.58.2"],\
             ["ts-node", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"],\
@@ -6095,6 +6096,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:18.2.0"],\
             ["react-router", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:6.8.1"],\
             ["react-router-dom", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:6.8.1"],\
+            ["react-virtuoso", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:4.1.0"],\
             ["sass", "npm:1.58.2"],\
             ["ts-node", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"],\
@@ -6157,6 +6159,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:18.2.0"],\
             ["react-router", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:6.8.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-virtuoso", [\
+        ["npm:4.1.0", {\
+          "packageLocation": "./.yarn/cache/react-virtuoso-npm-4.1.0-030d63e0dc-79e345ea9c.zip/node_modules/react-virtuoso/",\
+          "packageDependencies": [\
+            ["react-virtuoso", "npm:4.1.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:4.1.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-virtuoso-virtual-25dca41122/0/cache/react-virtuoso-npm-4.1.0-030d63e0dc-79e345ea9c.zip/node_modules/react-virtuoso/",\
+          "packageDependencies": [\
+            ["react-virtuoso", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:4.1.0"],\
+            ["@types/react", "npm:18.0.27"],\
+            ["@types/react-dom", "npm:18.0.10"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:931125d9937d851f44b90365478044940a0e5db4c6569025ec5727d844178954c8a20f6fe2833f9117c97250bca11016e8cb2c2fd2a80f32896cae9b0d9ffcf2#npm:18.2.0"]\
           ],\
           "packagePeers": [\
             "@types/react-dom",\
