@@ -6,8 +6,23 @@ import useInfiniteChats from '~/pages/reverse-infinite-scroll/hooks/useInfiniteC
 import './styles.scss';
 
 const ReverseInfiniteScrollPage = () => {
-  const { data, isLoading, isInitialLoading } = useInfiniteChats();
+  const {
+    data,
+    isLoading,
+    isInitialLoading,
+    fetchPreviousPage,
+    hasPreviousPage,
+    isFetchingPreviousPage,
+  } = useInfiniteChats();
+  const scrollContainerRef = useRef<HTMLElement>(null);
   const chatBottomRef = useRef<HTMLDivElement>(null);
+  const fetchOldChats = () => {
+    if (hasPreviousPage && !isFetchingPreviousPage) {
+      fetchPreviousPage().then(
+        () => (scrollContainerRef.current!.scrollTop = 1)
+      );
+    }
+  };
 
   useEffect(() => {
     chatBottomRef.current?.scrollIntoView();
@@ -17,11 +32,10 @@ const ReverseInfiniteScrollPage = () => {
 
   return (
     <div className="ris">
-      <section className="ris__window">
+      <section className="ris__window" ref={scrollContainerRef}>
         <IntersectionTarget
           className="ris__chat-top"
-          onIntersection={() => console.log('onIntersection')}
-          offIntersection={() => console.log('offIntersection')}
+          onIntersection={fetchOldChats}
         />
         <ul className="ris__chat-list">
           {data?.pages.map((page) => (

@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import type { Chat } from '~/pages/reverse-infinite-scroll/api/chats/types';
 
-import React from 'react';
+import React, { memo } from 'react';
 
 interface ChatsProps {
   chats: Chat[];
@@ -12,11 +12,11 @@ const Chats: FC<ChatsProps> = ({ chats }) => {
     <>
       {chats.map(({ id, message }) => (
         <li key={id} className="ris__chat-item">
-          {message}
+          {id} <br /> {message}
         </li>
       ))}
     </>
   );
 };
 
-export default Chats;
+export default memo(Chats);
