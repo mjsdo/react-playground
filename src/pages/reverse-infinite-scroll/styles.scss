@@ -1,6 +1,7 @@
 .ris {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   &__window {
     display: flex;

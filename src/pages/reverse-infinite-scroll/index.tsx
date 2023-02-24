@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import IntersectionTarget from '~/components/IntersectionTarget';
 import Chats from '~/pages/reverse-infinite-scroll/components/Chats';
+import useAddChat from '~/pages/reverse-infinite-scroll/hooks/useAddChat';
 import useInfiniteChats from '~/pages/reverse-infinite-scroll/hooks/useInfiniteChats';
 
 import './styles.scss';
@@ -9,15 +10,26 @@ const ReverseInfiniteScrollPage = () => {
   const {
     data,
     isLoading,
-    isInitialLoading,
     fetchPreviousPage,
     hasPreviousPage,
     isFetchingPreviousPage,
   } = useInfiniteChats();
   const scrollContainerRef = useRef<HTMLElement>(null);
   const chatBottomRef = useRef<HTMLDivElement>(null);
+  const addChat = useAddChat();
+  const handleAddChat = () => {
+    const id = crypto.randomUUID();
+    const message = 'new chat';
+    const $chatBottom = chatBottomRef.current;
+
+    addChat({ id, message });
+    setTimeout(() => {
+      $chatBottom?.scrollIntoView();
+    });
+  };
+
   const fetchOldChats = () => {
-    if (hasPreviousPage && !isFetchingPreviousPage) {
+    if (hasPreviousPage && !isFetchingPreviousPage && !isLoading) {
       fetchPreviousPage().then(
         () => (scrollContainerRef.current!.scrollTop = 1)
       );
@@ -26,7 +38,7 @@ const ReverseInfiniteScrollPage = () => {
 
   useEffect(() => {
     chatBottomRef.current?.scrollIntoView();
-  }, [isInitialLoading]);
+  }, [isLoading]);
 
   if (isLoading) return <div>로딩중...</div>;
 
@@ -39,12 +51,14 @@ const ReverseInfiniteScrollPage = () => {
         />
         <ul className="ris__chat-list">
           {data?.pages.map((page) => (
-            <Chats key={page[0].id} chats={page} />
+            <Chats key={page.at(0)?.id} chats={page} />
           ))}
         </ul>
         <div className="ris__chat-bottom" ref={chatBottomRef}></div>
       </section>
-      <button type="button">Add New Chat</button>
+      <button type="button" onClick={handleAddChat}>
+        Add New Chat
+      </button>
     </div>
   );
 };
