@@ -1,0 +1,17 @@
+.ris-virtual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__window {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 80vh;
+    background-color: beige;
+  }
+
+  &__chat-item {
+    padding: 15px;
+  }
+}
