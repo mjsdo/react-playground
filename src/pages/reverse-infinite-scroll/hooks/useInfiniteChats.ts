@@ -1,7 +1,9 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getChats } from '~/pages/reverse-infinite-scroll/api/chats';
+import queryKeys from '~/react-query/queryKeys';
+
 const useInfiniteChats = () => {
-  const queryKey = ['infinite'];
+  const queryKey = queryKeys.chats();
   const initialPageParam = '-1';
   return useInfiniteQuery(
     queryKey,

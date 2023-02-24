@@ -44,6 +44,7 @@ const ReverseInfiniteScrollPage = () => {
         </ul>
         <div className="ris__chat-bottom" ref={chatBottomRef}></div>
       </section>
+      <button type="button">Add New Chat</button>
     </div>
   );
 };
