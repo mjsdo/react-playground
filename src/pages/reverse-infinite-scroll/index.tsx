@@ -1,14 +1,16 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import IntersectionTarget from '~/components/IntersectionTarget';
+import Chats from '~/pages/reverse-infinite-scroll/components/Chats';
 import useInfiniteChats from '~/pages/reverse-infinite-scroll/hooks/useInfiniteChats';
 
 import './styles.scss';
 
 const ReverseInfiniteScrollPage = () => {
   const { data, isLoading, isInitialLoading } = useInfiniteChats();
-  const ref = useRef<HTMLDivElement>(null);
+  const chatBottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    ref.current?.scrollIntoView();
+    chatBottomRef.current?.scrollIntoView();
   }, [isInitialLoading]);
 
   if (isLoading) return <div>로딩중...</div>;
@@ -16,23 +18,17 @@ const ReverseInfiniteScrollPage = () => {
   return (
     <div className="ris">
       <section className="ris__window">
-        <div className="ris__intersection-target"></div>
+        <IntersectionTarget
+          className="ris__chat-top"
+          onIntersection={() => console.log('onIntersection')}
+          offIntersection={() => console.log('offIntersection')}
+        />
         <ul className="ris__chat-list">
-          {data?.pages.map((page) => {
-            const pageKey = page[0].id;
-
-            return (
-              <Fragment key={pageKey}>
-                {page.map(({ id, message }) => (
-                  <li key={id} className="ris__chat-item">
-                    {message}
-                  </li>
-                ))}
-              </Fragment>
-            );
-          })}
+          {data?.pages.map((page) => (
+            <Chats key={page[0].id} chats={page} />
+          ))}
         </ul>
-        <div className="ris__chat-end" ref={ref}></div>
+        <div className="ris__chat-bottom" ref={chatBottomRef}></div>
       </section>
     </div>
   );
