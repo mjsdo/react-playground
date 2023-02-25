@@ -7,10 +7,10 @@ interface ChatItemProps {
   chat: Chat;
 }
 
-const ChatItem: FC<ChatItemProps> = ({ chat: { id, message } }) => {
+const ChatItem: FC<ChatItemProps> = ({ chat: { id, content } }) => {
   return (
     <li key={id} className="ris-virtual__chat-item">
-      {id} <br /> {message}
+      {id} <br /> {content}
     </li>
   );
 };

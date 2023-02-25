@@ -20,10 +20,10 @@ const ReverseInfiniteScrollPage = () => {
   const addChat = useAddChat();
   const handleAddChat = () => {
     const id = crypto.randomUUID();
-    const message = 'new chat';
+    const content = 'new chat';
     const $chatBottom = chatBottomRef.current;
 
-    addChat({ id, message });
+    addChat({ id, content });
     setTimeout(() => {
       $chatBottom?.scrollIntoView();
     });

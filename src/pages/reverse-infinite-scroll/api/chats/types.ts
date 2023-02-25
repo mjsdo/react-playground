@@ -1,6 +1,6 @@
 export type Chat = {
   id: string;
-  message: string;
+  content: string;
 };
 
 export type GetChatsQueryParams = { cursor: string };

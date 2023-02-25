@@ -21,4 +21,4 @@ export const sliceChatsByCursor = (
 export const createChats = (size: number): Chat[] =>
   Array(size)
     .fill(undefined)
-    .map((_, id) => ({ id: id + '', message: faker.lorem.paragraph(5) }));
+    .map((_, id) => ({ id: id + '', content: faker.lorem.paragraph(5) }));

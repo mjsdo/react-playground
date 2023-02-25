@@ -33,10 +33,10 @@ const VirtualScrollPage = () => {
 
   const handleAddChat = () => {
     const id = crypto.randomUUID();
-    const message = 'new chat';
+    const content = 'new chat';
     const $virtuoso = virtuosoRef.current;
 
-    addChat({ id, message });
+    addChat({ id, content });
 
     setTimeout(() => {
       if ($virtuoso)

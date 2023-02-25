@@ -10,9 +10,9 @@ interface ChatsProps {
 const Chats: FC<ChatsProps> = ({ chats }) => {
   return (
     <>
-      {chats.map(({ id, message }) => (
+      {chats.map(({ id, content }) => (
         <li key={id} className="ris__chat-item">
-          {id} <br /> {message}
+          {id} <br /> {content}
         </li>
       ))}
     </>
