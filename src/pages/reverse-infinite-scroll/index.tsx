@@ -18,6 +18,7 @@ const ReverseInfiniteScrollPage = () => {
   const scrollContainerRef = useRef<HTMLElement>(null);
   const chatBottomRef = useRef<HTMLDivElement>(null);
   const addChat = useAddChat();
+
   const handleAddChat = () => {
     const id = crypto.randomUUID();
     const content = 'new chat';
@@ -30,7 +31,7 @@ const ReverseInfiniteScrollPage = () => {
   };
 
   const fetchOldChats = () => {
-    if (hasPreviousPage && !isFetchingPreviousPage && !isLoading) {
+    if (hasPreviousPage && !isFetchingPreviousPage) {
       fetchPreviousPage().then(
         () => (scrollContainerRef.current!.scrollTop = 1)
       );
