@@ -21,6 +21,7 @@ const getChats = rest.get<never, GetChatsQueryParams, GetChatsResult>(
 
     return res(
       ctx.status(200),
+      ctx.delay(500),
       ctx.json({
         chats,
         prevCursor,

@@ -10,12 +10,15 @@ export const sliceChatsByCursor = (
   cursor: string,
   limit = 10
 ) => {
-  const end = cursor === '-1' ? chats.length : Number(cursor) + 1;
-  const tmp = end - limit;
-  const start = tmp < 0 ? 0 : tmp;
-  const prevCursor = start - 1 < 0 ? null : String(start - 1);
+  const sliceEnd = cursor === '-1' ? chats.length : Number(cursor) + 1;
+  const tmp = sliceEnd - limit;
+  const sliceStart = tmp < 0 ? 0 : tmp;
+  const prevCursor = sliceStart - 1 < 0 ? null : String(sliceStart - 1);
 
-  return { chats: chats.slice(start, end), prevCursor: prevCursor } as const;
+  return {
+    chats: chats.slice(sliceStart, sliceEnd),
+    prevCursor,
+  } as const;
 };
 
 export const createChats = (size: number): Chat[] =>
