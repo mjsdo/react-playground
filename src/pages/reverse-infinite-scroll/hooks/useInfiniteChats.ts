@@ -10,7 +10,7 @@ const useInfiniteChats = () => {
     ({ pageParam = initialPageParam }) => getChats(pageParam),
     {
       getPreviousPageParam: (lastPage) => {
-        return lastPage.prevCursor || undefined;
+        return lastPage.prevCursor ?? undefined;
       },
       select: (data) => {
         return {
