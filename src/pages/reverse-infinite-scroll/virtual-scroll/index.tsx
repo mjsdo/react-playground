@@ -5,7 +5,7 @@ import { Virtuoso } from 'react-virtuoso';
 import ChatItem from '~/pages/reverse-infinite-scroll/components/ChatItem';
 import useAddChat from '~/pages/reverse-infinite-scroll/hooks/useAddChat';
 import useInfiniteChats from '~/pages/reverse-infinite-scroll/hooks/useInfiniteChats';
-import { add, concat } from '~/utils/predicate-utils';
+import { add, concat } from '~/utils/array-utils';
 
 import './styles.scss';
 
