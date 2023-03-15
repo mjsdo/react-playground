@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import Alert from '~/pages/modal/components/Alert';
 import Modal from '~/pages/modal/components/Modal';
 
+import './styles.scss';
+
 const ModalPage = () => {
   const [open, setOpen] = useState(false);
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
 
   return (
-    <section>
-      <button type="button" onClick={openModal}>
+    <div className="modal-page">
+      <button type="button" className="modal-page__open-btn" onClick={openModal}>
         모달열기
       </button>
 
@@ -23,7 +25,7 @@ const ModalPage = () => {
       >
         <Alert onClickCloseButton={closeModal} />
       </Modal>
-    </section>
+    </div>
   );
 };
 

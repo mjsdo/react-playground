@@ -1,0 +1,24 @@
+.modal-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  &__open-btn {
+    position: relative;
+    top: 30%;
+    cursor: pointer;
+    font-size: 24px;
+    width: 400px;
+    height: 50px;
+    outline: 0 solid;
+    outline-offset: -3px;
+    border: 1px solid black;
+    border-radius: 12px;
+    transition: outline 100ms;
+
+    &:focus {
+      outline: 5px solid black;
+    }
+  }
+}
