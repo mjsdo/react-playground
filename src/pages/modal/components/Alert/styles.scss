@@ -1,0 +1,43 @@
+.alert-box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+
+  &__title {
+    font-size: 18px;
+  }
+
+  &__close-btn {
+    border: 0;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #ff113b;
+    font-size: 24px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  &__submit-btn {
+    height: 36px;
+    min-width: 70%;
+    border: 0;
+    border-radius: 8px;
+    background-color: #028eff;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
