@@ -2,13 +2,17 @@ import type {
   ComponentPropsWithoutRef,
   CSSProperties,
   FC,
+  KeyboardEventHandler,
   ReactNode,
 } from 'react';
 
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createElement as el } from '~/utils/dom';
-import { getFocusableElements } from '~/utils/focusable-selectors';
+import {
+  getFocusableElement,
+  getFocusableElements,
+} from '~/utils/focusable-selectors';
 
 import './styles.scss';
 
@@ -31,12 +35,8 @@ const createModalPortal = () => {
   return $modalPortal;
 };
 
-const ModalOverlay: FC<ModalOverlayProps> = ({ children, ...rest }) => {
-  return (
-    <div className="modal-overlay" {...rest}>
-      {children}
-    </div>
-  );
+const ModalOverlay: FC<ModalOverlayProps> = (props) => {
+  return <div className="modal-overlay" {...props} />;
 };
 
 const Modal: FC<ModalProps> = ({
@@ -54,8 +54,10 @@ const Modal: FC<ModalProps> = ({
     if (shouldCloseOnOverlayClick) onRequestClose?.();
   };
 
-  const handlePressEscapeKey = () => {
-    onRequestClose?.();
+  const handlePressEscapeKey: KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (e.key === 'Escape') {
+      onRequestClose?.();
+    }
   };
 
   useEffect(() => {
@@ -73,7 +75,8 @@ const Modal: FC<ModalProps> = ({
 
     // 모달이 열릴 때 focus 되어있던 엘리먼트를 기억한다.
     const prevFocusElement = document.activeElement as HTMLElement;
-    contentRootRef.current?.focus();
+    const $contentRoot = contentRootRef.current;
+    if ($contentRoot) getFocusableElement($contentRoot)?.focus();
 
     // 모달을 닫으면 포커스를 prevFocusElement로 이동시킨다.
     return () => {
@@ -110,21 +113,20 @@ const Modal: FC<ModalProps> = ({
     const handleTabWithShiftOnFirstFocusable = (
       e: globalThis.KeyboardEvent
     ) => {
-      e.preventDefault();
       const withShift = e.shiftKey;
       const isTabKey = e.key === 'Tab';
 
       if (isTabKey && withShift) {
-        $contentRoot.focus();
+        e.preventDefault();
         $lastFocusable?.focus?.();
       }
     };
 
     const handleTabOnLastFocusable = (e: globalThis.KeyboardEvent) => {
-      e.preventDefault();
       const isTabKey = e.key === 'Tab';
 
       if (isTabKey) {
+        e.preventDefault();
         $contentRoot.focus();
         $firstFocusable?.focus?.();
       }
@@ -153,7 +155,9 @@ const Modal: FC<ModalProps> = ({
           style={overlayStyle}
         >
           <div
+            onClick={(e) => e.stopPropagation()}
             ref={contentRootRef}
+            className="modal-content"
             tabIndex={-1}
             role="dialog"
             aria-modal="true"
