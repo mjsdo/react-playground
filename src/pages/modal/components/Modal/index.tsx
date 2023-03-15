@@ -8,11 +8,8 @@ import type {
 
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { createElement as el } from '~/utils/dom';
-import {
-  getFocusableElement,
-  getFocusableElements,
-} from '~/utils/focusable-selectors';
+import usePreviousFocusOnClose from '~/pages/modal/hooks/usePreviousFocusOnClose';
+import useTrapFocus from '~/pages/modal/hooks/useTrapFocus';
 
 import './styles.scss';
 
@@ -50,16 +47,6 @@ const Modal: FC<ModalProps> = ({
   const portalRef = useRef<HTMLDivElement>(createModalPortal());
   const contentRootRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOverlay = () => {
-    if (shouldCloseOnOverlayClick) onRequestClose?.();
-  };
-
-  const handlePressEscapeKey: KeyboardEventHandler<HTMLDivElement> = (e) => {
-    if (e.key === 'Escape') {
-      onRequestClose?.();
-    }
-  };
-
   useEffect(() => {
     const $portal = portalRef.current;
     document.body.append($portal);
@@ -69,83 +56,19 @@ const Modal: FC<ModalProps> = ({
     };
   }, []);
 
-  // usePreviousFocusOnClose
-  useEffect(() => {
-    if (!isOpen) return;
+  usePreviousFocusOnClose({ isOpen, contentRootRef });
 
-    // 모달이 열릴 때 focus 되어있던 엘리먼트를 기억한다.
-    const prevFocusElement = document.activeElement as HTMLElement;
-    const $contentRoot = contentRootRef.current;
-    if ($contentRoot) getFocusableElement($contentRoot)?.focus();
+  useTrapFocus({ isOpen, contentRootRef });
 
-    // 모달을 닫으면 포커스를 prevFocusElement로 이동시킨다.
-    return () => {
-      prevFocusElement?.focus?.();
-    };
-  }, [isOpen]);
+  const handleClickOverlay = () => {
+    if (shouldCloseOnOverlayClick) onRequestClose?.();
+  };
 
-  // useTrapFocus
-  useEffect(() => {
-    if (!isOpen) return;
-    const $contentRoot = contentRootRef.current;
-    if (!$contentRoot) return;
-
-    const $$focusable = getFocusableElements($contentRoot);
-    const $firstFocusable = $$focusable.at(0) || $contentRoot;
-    const $lastFocusable = $$focusable.at(-1) || $contentRoot;
-
-    // 앞뒤로 요소를 추가한다.
-    const $modalTrapStart = el('div', { class: 'trap-start', tabindex: '0' });
-    const $modalTrapEnd = el('div', { class: 'trap-end', tabindex: '0' });
-    document.body.insertAdjacentElement('afterbegin', $modalTrapStart);
-    document.body.insertAdjacentElement('beforeend', $modalTrapEnd);
-
-    const handleFocusTrapStart = (e: globalThis.FocusEvent) => {
-      e.preventDefault();
-      $firstFocusable?.focus();
-    };
-
-    const handleFocusTrapEnd = (e: globalThis.FocusEvent) => {
-      e.preventDefault();
-      $lastFocusable?.focus();
-    };
-
-    const handleTabWithShiftOnFirstFocusable = (
-      e: globalThis.KeyboardEvent
-    ) => {
-      const withShift = e.shiftKey;
-      const isTabKey = e.key === 'Tab';
-
-      if (isTabKey && withShift) {
-        e.preventDefault();
-        $lastFocusable?.focus?.();
-      }
-    };
-
-    const handleTabOnLastFocusable = (e: globalThis.KeyboardEvent) => {
-      const isTabKey = e.key === 'Tab';
-
-      if (isTabKey) {
-        e.preventDefault();
-        $contentRoot.focus();
-        $firstFocusable?.focus?.();
-      }
-    };
-
-    $firstFocusable?.addEventListener(
-      'keydown',
-      handleTabWithShiftOnFirstFocusable
-    );
-    $lastFocusable?.addEventListener('keydown', handleTabOnLastFocusable);
-
-    $modalTrapStart.addEventListener('focus', handleFocusTrapStart);
-    $modalTrapEnd.addEventListener('focus', handleFocusTrapEnd);
-
-    return () => {
-      $modalTrapStart.remove();
-      $modalTrapEnd.remove();
-    };
-  }, [isOpen]);
+  const handlePressEscapeKey: KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (e.key === 'Escape') {
+      onRequestClose?.();
+    }
+  };
 
   return isOpen
     ? createPortal(
