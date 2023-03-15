@@ -20,7 +20,7 @@ interface ModalProps {
   children: ReactNode;
   isOpen?: boolean;
   overlayStyle?: CSSProperties;
-  contentStyle?: CSSProperties;
+  contentRootStyle?: CSSProperties;
   onRequestClose?: () => void;
   shouldCloseOnOverlayClick?: boolean;
 }
@@ -43,7 +43,7 @@ const Modal: FC<ModalProps> = ({
   children,
   isOpen = false,
   overlayStyle,
-  contentStyle,
+  contentRootStyle,
   onRequestClose,
   shouldCloseOnOverlayClick = false,
 }) => {
@@ -157,7 +157,7 @@ const Modal: FC<ModalProps> = ({
             tabIndex={-1}
             role="dialog"
             aria-modal="true"
-            style={contentStyle}
+            style={contentRootStyle}
           >
             {children}
           </div>
