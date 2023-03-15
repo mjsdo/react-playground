@@ -4,11 +4,12 @@ import Modal from '~/pages/modal/components/Modal';
 
 const ModalPage = () => {
   const [open, setOpen] = useState(false);
+  const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
 
   return (
     <section>
-      <button type="button" onClick={() => setOpen(true)}>
+      <button type="button" onClick={openModal}>
         모달열기
       </button>
 
