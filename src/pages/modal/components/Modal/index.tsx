@@ -21,6 +21,8 @@ interface ModalProps {
   isOpen?: boolean;
   overlayStyle?: CSSProperties;
   contentStyle?: CSSProperties;
+  onRequestClose?: () => void;
+  shouldCloseOnOverlayClick?: boolean;
 }
 
 const createModalPortal = () => {
@@ -42,9 +44,19 @@ const Modal: FC<ModalProps> = ({
   isOpen = false,
   overlayStyle,
   contentStyle,
+  onRequestClose,
+  shouldCloseOnOverlayClick = false,
 }) => {
   const portalRef = useRef<HTMLDivElement>(createModalPortal());
   const contentRootRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOverlay = () => {
+    if (shouldCloseOnOverlayClick) onRequestClose?.();
+  };
+
+  const handlePressEscapeKey = () => {
+    onRequestClose?.();
+  };
 
   useEffect(() => {
     const $portal = portalRef.current;
@@ -135,7 +147,11 @@ const Modal: FC<ModalProps> = ({
 
   return isOpen
     ? createPortal(
-        <ModalOverlay style={overlayStyle}>
+        <ModalOverlay
+          onClick={handleClickOverlay}
+          onKeyDown={handlePressEscapeKey}
+          style={overlayStyle}
+        >
           <div
             ref={contentRootRef}
             tabIndex={-1}
