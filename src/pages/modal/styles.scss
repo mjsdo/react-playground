@@ -6,16 +6,16 @@
 
   &__open-btn {
     position: relative;
-    top: 30%;
+    top: 20%;
     cursor: pointer;
-    font-size: 24px;
-    width: 400px;
+    font-size: 20px;
+    width: 200px;
     height: 50px;
-    outline: 0 solid;
-    outline-offset: -3px;
     border: 1px solid black;
     border-radius: 12px;
     transition: outline 100ms;
+    outline: 0 solid;
+    outline-offset: -3px;
 
     &:focus {
       outline: 5px solid black;

@@ -17,7 +17,7 @@ const ModalPage = () => {
 
       <Modal
         shouldCloseOnOverlayClick
-        onRequestClose={() => setOpen(false)}
+        onRequestClose={closeModal}
         isOpen={open}
         overlayStyle={{
           background: 'rgba(0, 0, 0, 0.5)',

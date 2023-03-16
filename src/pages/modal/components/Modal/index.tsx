@@ -8,7 +8,8 @@ import type {
 
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import usePreviousFocusOnClose from '~/pages/modal/hooks/usePreviousFocusOnClose';
+import useFocusOnFirstFocusable from '~/pages/modal/hooks/useFocusOnFirstFocusable';
+import usePreviousFocus from '~/pages/modal/hooks/usePreviousFocus';
 import useTrapFocus from '~/pages/modal/hooks/useTrapFocus';
 
 import './styles.scss';
@@ -56,7 +57,9 @@ const Modal: FC<ModalProps> = ({
     };
   }, []);
 
-  usePreviousFocusOnClose({ isOpen, contentRootRef });
+  usePreviousFocus({ isOpen });
+
+  useFocusOnFirstFocusable({ isOpen, contentRootRef });
 
   useTrapFocus({ isOpen, contentRootRef });
 

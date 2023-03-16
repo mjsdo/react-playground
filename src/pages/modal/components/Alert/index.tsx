@@ -4,11 +4,11 @@ import React from 'react';
 
 import './styles.scss';
 
-interface AlertBoxProps extends ComponentPropsWithoutRef<'section'> {
+interface AlertProps extends ComponentPropsWithoutRef<'section'> {
   onClickCloseButton: () => void;
 }
 
-const Alert: FC<AlertBoxProps> = ({ onClickCloseButton }) => {
+const Alert: FC<AlertProps> = ({ onClickCloseButton }) => {
   return (
     <section className="alert-box">
       <h2 className="alert-box__title">Title</h2>

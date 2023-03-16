@@ -40,4 +40,15 @@
     color: #fff;
     cursor: pointer;
   }
+
+  &__close-btn,
+  &__submit-btn {
+    outline: 0 solid;
+    outline-offset: -3px;
+    transition: outline 100ms;
+
+    &:focus {
+      outline: 5px solid black;
+    }
+  }
 }

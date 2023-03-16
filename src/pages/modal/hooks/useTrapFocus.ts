@@ -1,5 +1,5 @@
 // useTrapFocus
-import type { RefObject} from 'react';
+import type { RefObject } from 'react';
 
 import { useEffect } from 'react';
 import { createElement as el } from '~/utils/dom';
@@ -28,41 +28,36 @@ const useTrapFocus = ({ isOpen, contentRootRef }: UseTrapFocusParams) => {
 
     const handleFocusTrapStart = (e: globalThis.FocusEvent) => {
       e.preventDefault();
-      $firstFocusable?.focus();
+      $firstFocusable.focus();
     };
 
     const handleFocusTrapEnd = (e: globalThis.FocusEvent) => {
       e.preventDefault();
-      $lastFocusable?.focus();
+      $lastFocusable.focus();
     };
 
-    const handleTabWithShiftOnFirstFocusable = (
-      e: globalThis.KeyboardEvent
-    ) => {
+    const handleTabWithShift = (e: globalThis.KeyboardEvent) => {
       const withShift = e.shiftKey;
       const isTabKey = e.key === 'Tab';
 
       if (isTabKey && withShift) {
         e.preventDefault();
-        $lastFocusable?.focus?.();
+        $lastFocusable.focus();
       }
     };
 
-    const handleTabOnLastFocusable = (e: globalThis.KeyboardEvent) => {
+    const handleTab = (e: globalThis.KeyboardEvent) => {
       const isTabKey = e.key === 'Tab';
 
       if (isTabKey) {
         e.preventDefault();
         $contentRoot.focus();
-        $firstFocusable?.focus?.();
+        $firstFocusable.focus();
       }
     };
 
-    $firstFocusable?.addEventListener(
-      'keydown',
-      handleTabWithShiftOnFirstFocusable
-    );
-    $lastFocusable?.addEventListener('keydown', handleTabOnLastFocusable);
+    $firstFocusable.addEventListener('keydown', handleTabWithShift);
+    $lastFocusable.addEventListener('keydown', handleTab);
 
     $modalTrapStart.addEventListener('focus', handleFocusTrapStart);
     $modalTrapEnd.addEventListener('focus', handleFocusTrapEnd);
